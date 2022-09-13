@@ -1,0 +1,13 @@
+@import './variables.scss';
+#navBar{
+    background-color: $colorPrincipal;
+    height: fit-content;
+    width: 100vw;
+}    
+#navBotones{
+    list-style:none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 30px;
+}
