@@ -11,5 +11,5 @@ export default function ListaProductosContainer() {
     { id: 15, marca: "Nike", precio: 150 },
   ];
 
-  return <ListaProductosLayout productos={productos}/>
+  return <ListaProductosLayout productos={productos} />;
 }

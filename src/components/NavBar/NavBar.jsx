@@ -11,7 +11,7 @@ const NavBar = () => {
   
   return (
     <div>
-      <AppBar>
+      <AppBar position='relative'>
         <Toolbar> 
           <Typography variant='h6' flexGrow={1}>
             Farma-Ecommerce

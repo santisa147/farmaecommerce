@@ -1,0 +1,10 @@
+@import './variables.scss';
+#bienvenida{
+    position: absolute;
+    top: 20%;
+    left: 43%;
+    padding: 50px;
+    border: solid 3px rgb(116, 116, 116);
+    border-radius: 20%;
+    background-color: $colorSecundario;
+}

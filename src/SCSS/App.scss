@@ -1,6 +1,11 @@
 @import './variables.scss';
 @import './NavBar.scss';
-
-body{
+@import './PaperItem.scss';
+@import './Bienvenida.scss';
+main{
     background-color: $colorSecundario;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,19 +1,27 @@
-import React, {useState} from 'react';
-import NavBar from './components/NavBar/NavBar';
-import '../src/main.css'
-import { ThemeProvider } from '@emotion/react';
-import theme from './ThemeConfig';
-import { Button } from '@mui/material';
+import React from "react";
+import NavBar from "./components/NavBar/NavBar";
+import { ThemeProvider } from "@emotion/react";
+import theme from "./ThemeConfig";
+import Bienvenida from "./components/Bienvenida";
+import "../src/main.css";
+import ListaProductosContainer from "./components/ListaProductos/ListaProductosContainer";
 export function App() {
-  
   return (
-    
     <ThemeProvider theme={theme}>
-      <NavBar />
-      <Button>Boton1</Button>
+      <heather>
+        <NavBar id="NavBar" />
+      </heather>
+      <main>
+        <div id="bienvenida">
+          <Bienvenida name="Santiago" />
+          <Bienvenida name="Juan" />
+          <Bienvenida name="Carlos" />
+        </div>
+        <div id="listaProd">
+          <ListaProductosContainer></ListaProductosContainer>
+        </div>
+      </main>
     </ThemeProvider>
-    
-    
   );
 }
 

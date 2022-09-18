@@ -3,12 +3,22 @@
   height: fit-content;
   width: 100vw; }
 
-#navBotones {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 30px; }
+#listaProd {
+  width: 300px;
+  height: fit-content; }
 
-body {
+#bienvenida {
+  position: absolute;
+  top: 20%;
+  left: 43%;
+  padding: 50px;
+  border: solid 3px #747474;
+  border-radius: 20%;
   background-color: #EEEEEE; }
+
+main {
+  background-color: #EEEEEE;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
