@@ -5,6 +5,7 @@ import theme from "./ThemeConfig";
 import Bienvenida from "./components/Bienvenida";
 import "../src/main.css";
 import ListaProductosContainer from "./components/ListaProductos/ListaProductosContainer";
+import { ItemCount } from "./components/ItemCount";
 export function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -19,6 +20,9 @@ export function App() {
         </div>
         <div id="listaProd">
           <ListaProductosContainer></ListaProductosContainer>
+        </div>
+        <div id="itemCount">
+          <ItemCount/>
         </div>
       </main>
     </ThemeProvider>
