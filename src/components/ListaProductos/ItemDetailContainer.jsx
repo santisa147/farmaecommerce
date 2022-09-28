@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Item } from "./Item";
-export function ItemList({ items }) {
+import { ItemDetail } from "./ItemDetail";
+export function ItemDetailContainer({ items }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState("");
   useEffect(() => {
@@ -19,5 +19,5 @@ export function ItemList({ items }) {
       })
       .finally(console.log(productos));
   }, []);
-  return <Item prod={productos} />;
+  return <ItemDetail prod={productos} />;
 }

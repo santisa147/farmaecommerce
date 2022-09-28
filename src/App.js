@@ -7,6 +7,7 @@ import "../src/main.css";
 import ListaProductosContainer from "./components/ListaProductos/ListaProductosContainer";
 import { ItemCount } from "./components/ItemCount";
 import { Grid } from "@mui/material";
+import { Fetch } from "./Test/Fetch";
 export function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -19,14 +20,14 @@ export function App() {
           <Bienvenida name="Carlos" />
         </div> */}
         <div id="listaProd">
-          
-            <ListaProductosContainer></ListaProductosContainer>
-          
+          <ListaProductosContainer></ListaProductosContainer>
         </div>
         {/* <div id="itemCount">
-          <ItemCount/>
+          <ItemCount />
         </div> */}
+        {/* <Fetch/> */}
       </main>
+
     </ThemeProvider>
   );
 }
