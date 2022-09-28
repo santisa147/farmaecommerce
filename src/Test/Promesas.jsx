@@ -6,12 +6,11 @@ export const Promesas = () => {
       res("Promesa Resuelta");
     }, 10000);
   });
-  promesa.then(()=>{
+  promesa.then(() => {});
+  // .catch(()=>{
 
-  }).catch(()=>{
+  // }).finally(()=>{
 
-  }).finally(()=>{
-    
-  });
+  // });
   return <div>Promesas</div>;
 };

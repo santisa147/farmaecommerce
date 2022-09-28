@@ -6,24 +6,26 @@ import Bienvenida from "./components/Bienvenida";
 import "../src/main.css";
 import ListaProductosContainer from "./components/ListaProductos/ListaProductosContainer";
 import { ItemCount } from "./components/ItemCount";
+import { Grid } from "@mui/material";
 export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <heather>
-        <NavBar id="NavBar" />
-      </heather>
+      <NavBar id="NavBar" />
+
       <main>
-        <div id="bienvenida">
+        {/* <div id="bienvenida">
           <Bienvenida name="Santiago" />
           <Bienvenida name="Juan" />
           <Bienvenida name="Carlos" />
-        </div>
+        </div> */}
         <div id="listaProd">
-          <ListaProductosContainer></ListaProductosContainer>
+          
+            <ListaProductosContainer></ListaProductosContainer>
+          
         </div>
-        <div id="itemCount">
+        {/* <div id="itemCount">
           <ItemCount/>
-        </div>
+        </div> */}
       </main>
     </ThemeProvider>
   );

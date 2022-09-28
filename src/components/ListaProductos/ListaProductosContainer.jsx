@@ -1,15 +1,15 @@
 import React from "react";
-import ListaProductosLayout from "./ListaProductosLayout";
+import { ItemList } from "./ItemList";
 
 export default function ListaProductosContainer() {
   const productos = [
-    { id: 10, marca: "Nike", precio: 150 },
-    { id: 11, marca: "Nike", precio: 150 },
-    { id: 12, marca: "Nike", precio: 150 },
-    { id: 13, marca: "Nike", precio: 150 },
-    { id: 14, marca: "Nike", precio: 150 },
-    { id: 15, marca: "Nike", precio: 150 },
+    { id: 10, title: "Nike", description: 150, price: 100, pictureURL: "" },
+    { id: 11, title: "Nike", description: 150, price: 100, pictureURL: "" },
+    { id: 12, title: "Nike", description: 150, price: 100, pictureURL: "" },
+    // { id: 13, title: "Nike", description: 150, price: 100, pictureURL: "" },
+    // { id: 14, title: "Nike", description: 150, price: 100, pictureURL: "" },
+    // { id: 15, title: "Nike", description: 150, price: 100, pictureURL: "" },
   ];
 
-  return <ListaProductosLayout productos={productos} />;
+  return <ItemList items={productos} />;
 }
