@@ -23,8 +23,8 @@ export function ItemDetail({ prod }) {
           <CardMedia
           component="img"
           height="140"
-          image="https://static.nike.com/a/images/f_jpg,q_auto:eco/61b4738b-e1e1-4786-8f6c-26aa0008e80b/swoosh-logo-black.png"
-          alt="green iguana"
+          image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
+          alt="ACTRON"
         />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -37,7 +37,7 @@ export function ItemDetail({ prod }) {
               </Typography>
             </CardContent>
 
-            {/* <img src={item.pictureURL} id="imgProd" />; */}
+           
           </Card>
         </Grid>
       ))}
