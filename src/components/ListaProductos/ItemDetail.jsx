@@ -1,31 +1,88 @@
 import { Card, CardContent, Grid, Typography, CardMedia } from "@mui/material";
 import React from "react";
+import { ItemCount } from "../ItemCount";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import Cart from "../Cart";
+// const prod = [
+//   {
+//     id: 10,
+//     title: "Actron",
+//     description: 150,
+//     price: 100,
+//     pictureURL: "",
+//     idcategoria: "recetas",
+//   },
+//   {
+//     id: 11,
+//     title: "Actron",
+//     description: 150,
+//     price: 100,
+//     pictureURL: "",
+//     idcategoria: "recetas",
+//   },
+//   {
+//     id: 12,
+//     title: "Actron",
+//     description: 150,
+//     price: 100,
+//     pictureURL: "",
+//     idcategoria: "recetas",
+//   },
+//   {
+//     id: 13,
+//     title: "Actron",
+//     description: 150,
+//     price: 100,
+//     pictureURL: "",
+//     idcategoria: "recetas",
+//   },
+//   {
+//     id: 14,
+//     title: "Actron",
+//     description: 150,
+//     price: 100,
+//     pictureURL: "",
+//     idcategoria: "ventalibre",
+//   },
+//   {
+//     id: 15,
+//     title: "Actron",
+//     description: 150,
+//     price: 100,
+//     pictureURL: "",
+//     idcategoria: "ventalibre",
+//   },
+// ];
 
 export function ItemDetail({ prod }) {
-  // const [producto, setProducto] = useState([]);
-  // useEffect(() => {
-  //   let itemProm = new Promise((res) => {
-  //     setTimeout(() => {
-  //       res(items);
-  //     }, 2000);
-  //   });
-  //   itemProm.then((res) => {
-  //     setProducto(res);
-  //   });
-  // });
+  const { idproduct } = useParams();
+  const [producto, setProducto] = useState([]);
+  useEffect(() => {
+    if (idproduct) {
+      setProducto(prod.filter((i) => i.id == idproduct));
+    }
+  }, [idproduct]);
+
+  function handleAddCart(count) {
+    console.log(count);
+    producto.cartCant = count
+    console.log(producto.cartCant);
+ 
+  }
+
   return (
-    <Grid container spacing={4}>
-      {prod.map((item) => (
+    <Grid container spacing={1} justifyContent="center">
+      {producto.map((item) => (
         <Grid item>
-          <Card>
-          <CardMedia
-          component="img"
-          height="140"
-          image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
-          alt="ACTRON"
-        />
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="200"
+              image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
+              alt="ACTRON"
+            />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {item.title}
@@ -34,10 +91,10 @@ export function ItemDetail({ prod }) {
                 <p id="itemDesc">{item.description}</p>
                 <p id="itemPrice">Precio: {item.price}</p>
                 <p id="itemID">Item ID: {item.id}</p>
+                <p>Item Category: {item.idcategoria}</p>
               </Typography>
+              <ItemCount handleCartAdd={handleAddCart} />
             </CardContent>
-
-           
           </Card>
         </Grid>
       ))}

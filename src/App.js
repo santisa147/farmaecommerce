@@ -1,25 +1,90 @@
-import { ThemeProvider } from "@emotion/react";
 import React from "react";
 import "../src/main.css";
-import ListaProductosContainer from "./components/ListaProductos/ListaProductosContainer";
-import NavBar from "./components/NavBar/NavBar";
-import theme from "./ThemeConfig";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ItemDetail } from "./components/ListaProductos/ItemDetail";
 import { ItemDetailContainer } from "./components/ListaProductos/ItemDetailContainer";
+import NavBar from "./components/NavBar/NavBar";
+import Test from "./Test/Test";
+import { ThemeProvider } from "@mui/material";
+import theme from "./ThemeConfig";
+import Cart from "./components/Cart";
+const items = [
+  {
+    id: 10,
+    title: "Actron",
+    description: 150,
+    price: 100,
+    pictureURL: "",
+    idcategoria: "recetas",
+    
+  },
+  {
+    id: 11,
+    title: "Actron",
+    description: 150,
+    price: 100,
+    pictureURL: "",
+    idcategoria: "recetas",
+    
+  },
+  {
+    id: 12,
+    title: "Actron",
+    description: 150,
+    price: 100,
+    pictureURL: "",
+    idcategoria: "recetas",
+    
+  },
+  {
+    id: 13,
+    title: "Actron",
+    description: 150,
+    price: 100,
+    pictureURL: "",
+    idcategoria: "recetas",
+    
+  },
+  {
+    id: 14,
+    title: "Actron",
+    description: 150,
+    price: 100,
+    pictureURL: "",
+    idcategoria: "ventalibre",
+    
+  },
+  {
+    id: 15,
+    title: "Actron",
+    description: 150,
+    price: 100,
+    pictureURL: "",
+    idcategoria: "ventalibre",
+    
+  },
+];
 export function App() {
   return (
-    <>
-      <BrowserRouter >
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<ItemDetailContainer />} />
-          <Route path="/category/:idcategory" element={<ItemDetailContainer />} />
-          <Route path="/product/:idproduct"  />
-          <Route />
+          <Route path="/test" element={<Test />} />
+          <Route path="/" element={<ItemDetailContainer items={items} />} />
+          <Route
+            path="/category/:idcategory"
+            element={<ItemDetailContainer items={items} />}
+          />
+          <Route
+            path="/product/:idproduct"
+            element={<ItemDetail prod={items} />}
+          />
+          
+          <Route path="/cart" element={<Cart itemCart={items}/>}/>
         </Routes>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 

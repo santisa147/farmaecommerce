@@ -3,6 +3,7 @@ import {
   AppBar,
   Box,
   Button,
+  IconButton,
   MenuItem,
   Toolbar,
   Typography,
@@ -11,7 +12,6 @@ import * as React from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function NavBar() {
-
   return (
     <div>
       <AppBar position="relative">
@@ -52,8 +52,14 @@ export default function NavBar() {
                 </Button>
               </Link>
             </MenuItem>
-          </Box> 
-          <ShoppingCartOutlinedIcon aling={"right"}></ShoppingCartOutlinedIcon>
+          </Box>
+          <Link to={"/cart"}>
+            <IconButton>
+              <ShoppingCartOutlinedIcon
+                aling={"right"}
+              ></ShoppingCartOutlinedIcon>
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
