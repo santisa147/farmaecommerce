@@ -1,75 +1,33 @@
 import { Card, CardContent, Grid, Typography, CardMedia } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { ItemCount } from "../ItemCount";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Cart from "../Cart";
-// const prod = [
-//   {
-//     id: 10,
-//     title: "Actron",
-//     description: 150,
-//     price: 100,
-//     pictureURL: "",
-//     idcategoria: "recetas",
-//   },
-//   {
-//     id: 11,
-//     title: "Actron",
-//     description: 150,
-//     price: 100,
-//     pictureURL: "",
-//     idcategoria: "recetas",
-//   },
-//   {
-//     id: 12,
-//     title: "Actron",
-//     description: 150,
-//     price: 100,
-//     pictureURL: "",
-//     idcategoria: "recetas",
-//   },
-//   {
-//     id: 13,
-//     title: "Actron",
-//     description: 150,
-//     price: 100,
-//     pictureURL: "",
-//     idcategoria: "recetas",
-//   },
-//   {
-//     id: 14,
-//     title: "Actron",
-//     description: 150,
-//     price: 100,
-//     pictureURL: "",
-//     idcategoria: "ventalibre",
-//   },
-//   {
-//     id: 15,
-//     title: "Actron",
-//     description: 150,
-//     price: 100,
-//     pictureURL: "",
-//     idcategoria: "ventalibre",
-//   },
-// ];
+import { CartContext } from "../CartContext";
+import { render } from "@testing-library/react";
+import { DataContext } from "../DataContext";
 
-export function ItemDetail({ prod }) {
+export function ItemDetail() {
+  const { cartItems, setcartItems } = useContext(CartContext);
+  const { itemList } = useContext(DataContext);
   const { idproduct } = useParams();
   const [producto, setProducto] = useState([]);
   useEffect(() => {
     if (idproduct) {
-      setProducto(prod.filter((i) => i.id == idproduct));
+      setProducto(itemList.filter((i) => i.id == idproduct));
     }
   }, [idproduct]);
 
   function handleAddCart(count) {
-    console.log(count);
-    producto.cartCant = count
-    console.log(producto.cartCant);
- 
+    itemList.filter((d) => {
+      if (d.id == idproduct) {
+        d.cartcant= count
+      }
+    });
+    console.log(itemList);
+    setcartItems(cartItems.concat(itemList.filter((i) => i.id == idproduct)));
   }
 
   return (

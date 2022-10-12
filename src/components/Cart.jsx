@@ -1,40 +1,76 @@
-import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "./CartContext";
 import { ItemCount } from "./ItemCount";
-let itemList = [];
-export default function Cart({ itemCart }) {
-  
-  
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { render } from "@testing-library/react";
+import { DataContext } from "./DataContext";
 
+export default function Cart() {
+  const { cartItems, setcartItems } = useContext(CartContext);
+  const {itemList }= useContext(DataContext)
+  function handleDelete(id){
+    itemList.filter((d) => {
+      if (d.id == id) {
+        d.cartcant= 0
+      }
+    });
+    setcartItems(cartItems.filter((i)=>i.id != id))   
+  }
+  function handleClear(){
+    render()
+    setcartItems([])
+    itemList.forEach(element => {
+      element.cartcant = 0
+    });
+  }
   return (
-    <Grid container spacing={1} justifyContent="center">
-      {itemList.map((item) => (
-        <Grid item>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-              component="img"
-              height="200"
-              image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
-              alt="ACTRON"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {item.title}
-              </Typography>
-              <Typography variant="body2">
-                <p id="itemDesc">{item.description}</p>
-                <p id="itemPrice">Precio: {item.price}</p>
-                <p id="itemID">Item ID: {item.id}</p>
-                <p>Item Category: {item.idcategoria}</p>
-                <p>Cantidad de items: {item.cantCart}</p>
-              </Typography>
-              <ItemCount />
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
+    <div>
+      <Grid container spacing={1} justifyContent="center">
+        {cartItems.map((item) => (
+          <Grid item>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
+                alt="ACTRON"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.title}
+                </Typography>
+                <Typography variant="body2">
+                  <p id="itemDesc">{item.description}</p>
+                  <p id="itemPrice">Precio: {item.price}</p>
+                  <p id="itemID">Item ID: {item.id}</p>
+                  <p>Item Category: {item.idcategoria}</p>
+                  <p>Cantidad de items: {item.cartcant}</p>
+                </Typography>
+                <ButtonGroup>
+                  <Button onClick={()=>handleDelete(item.id)}>Eliminar Producto</Button>
+                </ButtonGroup>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      <div id="trashIcon">
+      <IconButton onClick={handleClear}>
+        <DeleteForeverIcon color={'primary'}fontSize={'large'} justifyContent={'center'}></DeleteForeverIcon>
+      </IconButton>
+      </div>
+    </div>
   );
 }

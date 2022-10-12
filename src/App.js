@@ -8,6 +8,8 @@ import Test from "./Test/Test";
 import { ThemeProvider } from "@mui/material";
 import theme from "./ThemeConfig";
 import Cart from "./components/Cart";
+import { CartProvider } from "./components/CartContext";
+import { DataProvider } from "./components/DataContext";
 const items = [
   {
     id: 10,
@@ -16,7 +18,7 @@ const items = [
     price: 100,
     pictureURL: "",
     idcategoria: "recetas",
-    
+    cartcant: 0,
   },
   {
     id: 11,
@@ -25,7 +27,7 @@ const items = [
     price: 100,
     pictureURL: "",
     idcategoria: "recetas",
-    
+    cartcant: 0,
   },
   {
     id: 12,
@@ -34,7 +36,7 @@ const items = [
     price: 100,
     pictureURL: "",
     idcategoria: "recetas",
-    
+    cartcant: 0,
   },
   {
     id: 13,
@@ -43,7 +45,7 @@ const items = [
     price: 100,
     pictureURL: "",
     idcategoria: "recetas",
-    
+    cartcant: 0,
   },
   {
     id: 14,
@@ -52,7 +54,7 @@ const items = [
     price: 100,
     pictureURL: "",
     idcategoria: "ventalibre",
-    
+    cartcant: 0,
   },
   {
     id: 15,
@@ -61,30 +63,36 @@ const items = [
     price: 100,
     pictureURL: "",
     idcategoria: "ventalibre",
-    
+    cartcant: 0,
   },
 ];
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/test" element={<Test />} />
-          <Route path="/" element={<ItemDetailContainer items={items} />} />
-          <Route
-            path="/category/:idcategory"
-            element={<ItemDetailContainer items={items} />}
-          />
-          <Route
-            path="/product/:idproduct"
-            element={<ItemDetail prod={items} />}
-          />
-          
-          <Route path="/cart" element={<Cart itemCart={items}/>}/>
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <DataProvider>
+    <CartProvider>
+      <div>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              <Route path="/test" element={<Test />} />
+              <Route path="/" element={<ItemDetailContainer items={items} />} />
+              <Route
+                path="/category/:idcategory"
+                element={<ItemDetailContainer items={items} />}
+              />
+              <Route
+                path="/product/:idproduct"
+                element={<ItemDetail  />}
+              />
+
+              <Route path="/cart" element={<Cart  />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </div>
+    </CartProvider>
+    </DataProvider>
   );
 }
 
