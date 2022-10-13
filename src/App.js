@@ -10,62 +10,7 @@ import theme from "./ThemeConfig";
 import Cart from "./components/Cart";
 import { CartProvider } from "./components/CartContext";
 import { DataProvider } from "./components/DataContext";
-const items = [
-  {
-    id: 10,
-    title: "Actron",
-    description: 150,
-    price: 100,
-    pictureURL: "",
-    idcategoria: "recetas",
-    cartcant: 0,
-  },
-  {
-    id: 11,
-    title: "Actron",
-    description: 150,
-    price: 100,
-    pictureURL: "",
-    idcategoria: "recetas",
-    cartcant: 0,
-  },
-  {
-    id: 12,
-    title: "Actron",
-    description: 150,
-    price: 100,
-    pictureURL: "",
-    idcategoria: "recetas",
-    cartcant: 0,
-  },
-  {
-    id: 13,
-    title: "Actron",
-    description: 150,
-    price: 100,
-    pictureURL: "",
-    idcategoria: "recetas",
-    cartcant: 0,
-  },
-  {
-    id: 14,
-    title: "Actron",
-    description: 150,
-    price: 100,
-    pictureURL: "",
-    idcategoria: "ventalibre",
-    cartcant: 0,
-  },
-  {
-    id: 15,
-    title: "Actron",
-    description: 150,
-    price: 100,
-    pictureURL: "",
-    idcategoria: "ventalibre",
-    cartcant: 0,
-  },
-];
+
 export function App() {
   return (
     <DataProvider>
@@ -76,10 +21,10 @@ export function App() {
             <NavBar />
             <Routes>
               <Route path="/test" element={<Test />} />
-              <Route path="/" element={<ItemDetailContainer items={items} />} />
+              <Route path="/" element={<ItemDetailContainer  />} />
               <Route
                 path="/category/:idcategory"
-                element={<ItemDetailContainer items={items} />}
+                element={<ItemDetailContainer  />}
               />
               <Route
                 path="/product/:idproduct"

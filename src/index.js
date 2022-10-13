@@ -1,10 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { initializeApp } from "firebase/app";
+initializeApp({
+  apiKey: "AIzaSyAR2ACqq48RiPMb_JQdODlY-DY2IkQd2dU",
+  authDomain: "farmaecommerce-dbf62.firebaseapp.com",
+  projectId: "farmaecommerce-dbf62",
+  storageBucket: "farmaecommerce-dbf62.appspot.com",
+  messagingSenderId: "1080066682869",
+  appId: "1:1080066682869:web:0c470cdd4203efb5b9babc",
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
