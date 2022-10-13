@@ -14,21 +14,30 @@ export function ItemDetail() {
   const { items } = useContext(DataContext);
   const { idproduct } = useParams();
   const [producto, setProducto] = useState([]);
+  let yaesta = false
   useEffect(() => {
     if (idproduct) {
       setProducto(items.filter((i) => i.id == idproduct));
     }
   }, [idproduct]);
-
+  cartItems.forEach(e => {
+    if (e.id == idproduct){
+      yaesta = true
+    }
+    return true
+  })
   function handleAddCart(count) {
     if (count >> 0) {
       items.filter((d) => {
-        if (d.id == idproduct) {
+        if (d.id == idproduct && yaesta == false) {
           d.cartcant = count;
         }
       });
       console.log(items);
-      setcartItems(cartItems.concat(items.filter((i) => i.id == idproduct)));
+      if(yaesta){
+        alert('Ya existe este producto en su carrito')
+      }else{setcartItems(cartItems.concat(items.filter((i) => i.id == idproduct)));}
+      
     }
   }
 
