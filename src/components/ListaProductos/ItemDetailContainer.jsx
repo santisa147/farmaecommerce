@@ -6,62 +6,45 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { render } from "@testing-library/react";
+import { DataContext } from "../DataContext";
 
 export function ItemDetailContainer() {
+  const { items } = useContext(DataContext);
   const [productos, setProductos] = useState([]);
   const { idcategory } = useParams();
-  const [productoslimpios, setproductoslimpios] = useState([]);
+
   useEffect(() => {
-    
-      const db = getFirestore();
-      const collectionRef = collection(db, "product");
-      getDocs(collectionRef).then((res) => {
-        setproductoslimpios(
-          res.docs.map((item) => {
-            return { ...item.data(), id: item.id };
-          })
-        );
-      });
-    
-  }, []);
-  useEffect(() => {
+    console.log(items)
     if (!idcategory) {
-      setProductos(productoslimpios);
+      setProductos(items);
     } else {
-      setProductos(
-        productoslimpios.filter((prod) => prod.idcategoria == idcategory)
-      );
+      setProductos(items.filter((prod) => prod.idcategoria == idcategory));
     }
-    console.log(productos);
   }, [idcategory]);
 
   return (
     <Grid container>
       {productos.map((item) => (
-        <div key={item.id}>
-          <Grid item>
-            <Card>
-              <CardMedia
-                component="img"
-                height="140"
-                image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
-                alt="ACTRON"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {item.title}
-                </Typography>
-              </CardContent>
-            </Card>
-            <Link to={"/product/" + item.id}>
-              <Button>Detalles de Producto</Button>
-            </Link>
-          </Grid>
-        </div>
+        <Grid item>
+          <Card>
+            <CardMedia
+              component="img"
+              height="140"
+              image="https://www.actron.com.ar/sites/g/files/vrxlpx19316/files/styles/desktop_1000xauto/public/2021-02/capsula-actron-alta-copy-2.png?itok=lL-npfYO"
+              alt="ACTRON"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {item.title}
+              </Typography>
+            </CardContent>
+          </Card>
+          <Link to={"/product/" + item.id}>
+            <Button>Detalles de Producto</Button>
+          </Link>
+        </Grid>
       ))}
     </Grid>
   );

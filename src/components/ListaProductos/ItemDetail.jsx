@@ -11,23 +11,25 @@ import { DataContext } from "../DataContext";
 
 export function ItemDetail() {
   const { cartItems, setcartItems } = useContext(CartContext);
-  const { itemList } = useContext(DataContext);
+  const { items } = useContext(DataContext);
   const { idproduct } = useParams();
   const [producto, setProducto] = useState([]);
   useEffect(() => {
     if (idproduct) {
-      setProducto(itemList.filter((i) => i.id == idproduct));
+      setProducto(items.filter((i) => i.id == idproduct));
     }
   }, [idproduct]);
 
   function handleAddCart(count) {
-    itemList.filter((d) => {
-      if (d.id == idproduct) {
-        d.cartcant= count
-      }
-    });
-    console.log(itemList);
-    setcartItems(cartItems.concat(itemList.filter((i) => i.id == idproduct)));
+    if (count >> 0) {
+      items.filter((d) => {
+        if (d.id == idproduct) {
+          d.cartcant = count;
+        }
+      });
+      console.log(items);
+      setcartItems(cartItems.concat(items.filter((i) => i.id == idproduct)));
+    }
   }
 
   return (

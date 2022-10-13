@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ItemDetail } from "./components/ListaProductos/ItemDetail";
 import { ItemDetailContainer } from "./components/ListaProductos/ItemDetailContainer";
 import NavBar from "./components/NavBar/NavBar";
-import Test from "./Test/Test";
+import Test from "./components/CarritoVacio";
 import { ThemeProvider } from "@mui/material";
 import theme from "./ThemeConfig";
 import Cart from "./components/Cart";
@@ -20,7 +20,7 @@ export function App() {
           <BrowserRouter>
             <NavBar />
             <Routes>
-              <Route path="/test" element={<Test />} />
+              
               <Route path="/" element={<ItemDetailContainer  />} />
               <Route
                 path="/category/:idcategory"
